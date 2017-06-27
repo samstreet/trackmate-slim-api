@@ -27,6 +27,7 @@ Class Config
                     'password' => 'trackmate'
                 ),
                 'otherOptions' => array(),
+				"services" => array()
             );
         } else {
             $config = array(
@@ -37,8 +38,17 @@ Class Config
                     'password' => '7UU/kdR9h'
                 ),
                 'otherOptions' => array(),
+				"services" => array()
             );
         }
+        
+        $config["services"] = array(
+        	"base" => "Trackmate\Service\Base",
+			"db" => "Trackmate\Service\DatabaseService",
+			"user" => "Trackmate\Service\UserService",
+			"ride" => "Trackmate\Service\RideService"
+		);
+        
         return $config;
     }
 
