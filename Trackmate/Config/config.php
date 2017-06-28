@@ -11,12 +11,12 @@ namespace Trackmate\Config;
 Class Config
 {
 
-    protected $_config;
+    protected $config;
 
     /**
      * @return mixed
      */
-    public static function getConfig()
+    public function bootstrap()
     {
         if(__ENVIRONMENT__ == 'dev') {
             $config = array(
@@ -26,8 +26,7 @@ Class Config
                     'username' => 'trackmate',
                     'password' => 'trackmate'
                 ),
-                'otherOptions' => array(),
-				"services" => array()
+                'otherOptions' => array()
             );
         } else {
             $config = array(
@@ -37,22 +36,41 @@ Class Config
                     'username' => 'cl51-samstreet',
                     'password' => '7UU/kdR9h'
                 ),
-                'otherOptions' => array(),
-				"services" => array()
+                'otherOptions' => array()
             );
         }
         
+        $config["routes"] = [];
+        
         $config["services"] = array(
-        	"base" => "Trackmate\Service\Base",
-			"db" => "Trackmate\Service\DatabaseService",
-			"user" => "Trackmate\Service\UserService",
-			"ride" => "Trackmate\Service\RideService"
+        	"base" => [
+        		"class" => "Trackmate\Service\Base",
+				"deps" => [
+					new \PDO('mysql:host=127.0.0.1;dbname=trackmate;charset=utf8', 'trackmate','trackmate')
+				]
+			],
+			"db" => [
+				"class" => "Trackmate\Service\DatabaseService",
+				"deps" => [
+					new \PDO('mysql:host=127.0.0.1;dbname=trackmate;charset=utf8', 'trackmate','trackmate')
+				]
+			],
+			"user" => [
+				"class" => "Trackmate\Service\UserService",
+				"deps" => [
+				
+				]
+			],
+			"ride" => [
+				"class" => "Trackmate\Service\RideService",
+				"deps" => [
+				
+				]
+			]
 		);
         
-        return $config;
+        $this->config = $config;
+        
+        return $this;
     }
-
-
-
-
 }

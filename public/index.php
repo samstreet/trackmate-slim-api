@@ -1,10 +1,11 @@
 <?php
 
 use Trackmate\Service\Base as BaseService;
-use Slim\Slim;
+use Slim\App;
 use Trackmate\Config\Config;
 use Trackmate\Core\ServiceRegister;
 use Trackmate\Core\ServiceLocator;
+use Trackmate\Core\Trackmate;
 
 require '../vendor/autoload.php';
 
@@ -17,44 +18,14 @@ if($_SERVER['HTTP_HOST'] == "dev.trackmate.com" || $_SERVER['HTTP_HOST'] == "0.0
 
 define('__ENVIRONMENT__', 'live');
 
-\Slim\Slim::registerAutoloader();
+$core = (new Trackmate(new Config()))->bootstrap();
 
-$app = new \Slim\Slim(array(
-	'templates.path' => '..' . __ROOT__ . 'templates/'
-));
+echo "<pre>";
+die(var_dump($core->getServiceLocator()->get("user")));
+$services["sl"] = $core->getServiceLocator();
 
-$config = Config::getConfig();
-$serviceRegister = new ServiceRegister();
-$serviceRegister->register("base", new Trackmate\Service\Base(
-	new \PDO(
-		"mysql:host=".$config->getConfig()["database"]["host"].';dbname='.$config->getConfig()["database"]["database"].';charset=utf8',
-		$config->getConfig()["database"]["username"],
-		$config->getConfig()["database"]["password"]
-	))
-);
-
-$serviceLocator = new ServiceLocator($serviceRegister);
-
-die(var_dump($serviceLocator));
-
-// register the services
-//$app->__set("config", new Trackmate\Config\Config());
-//$app->__set("baseService", new Trackmate\Service\Base(
-//	new \PDO(
-//		"mysql:host=".$app->__get("config")->getConfig()["database"]["host"].';dbname='.$app->__get("config")->getConfig()["database"]["database"].';charset=utf8',
-//		$app->__get("config")->getConfig()["database"]["username"],
-//		$app->__get("config")->getConfig()["database"]["password"]
-//	)
-//));
-//$app->__set("dbService", new Trackmate\Service\DatabaseService(
-//	new \PDO(
-//		"mysql:host=".$app->__get("config")->getConfig()["database"]["host"].';dbname='.$app->__get("config")->getConfig()["database"]["database"].';charset=utf8',
-//		$app->__get("config")->getConfig()["database"]["username"],
-//		$app->__get("config")->getConfig()["database"]["password"]
-//	)
-//));
-//$app->__set("userService", new Trackmate\Service\UserService());
-//$app->__set("rideService", new Trackmate\Service\RideService());
+$container = new \Slim\Container($services);
+$app = new App($container);
 
 // post routes
 $app->post(
@@ -188,9 +159,9 @@ $app->post('/api/authenticate', function() use ($app){
 
 // get routes
 $app->get('/', function () use ($app) {
-	$app->render("index.php");
-}
-);
+	echo "<pre>";
+	die(var_dump($app->getContainer()->get("sl")));
+});
 
 $app->get('/api/ride/:token', function ($token) use ($app) {
 	$app->request()->headers->set("Accept", "application/json");

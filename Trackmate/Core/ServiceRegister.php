@@ -13,11 +13,10 @@ class ServiceRegister implements IServiceLocatorAware
 	 * The register of services
 	 * @var
 	 */
-	protected $register;
+	protected $register = [];
 	
 	public function __construct()
 	{
-		$this->register = new Collection();
 	}
 	
 	/**
@@ -27,9 +26,12 @@ class ServiceRegister implements IServiceLocatorAware
 	 * @return Collection
 	 */
 	public function register($identifier, $service, $params= []){
-		$this->register->add($identifier, $service);
+		$this->register[$identifier] = [
+			"class" => $service,
+			"deps" => $params
+		];
 		
-		return $this;
+		return $this->register;
 	}
 	
 	/**
@@ -39,7 +41,25 @@ class ServiceRegister implements IServiceLocatorAware
 	 */
 	public function get($identifier)
 	{
-		// TODO: Implement get() method.
+		$class = $this->register[$identifier];
+		$object = $class["class"];
+		$deps = $class["deps"];
+		
+		if( !is_null($deps) ){
+			switch(count($deps)){
+				case 1:
+					return new $object($deps[0]);
+					break;
+				case 2:
+					return new $object($deps[0], $deps[1]);
+					break;
+				case 2:
+					return new $object($deps[0], $deps[1], $deps[2]);
+					break;
+				default:
+					return new $object();
+			}
+		}
 	}
 	
 	/**
@@ -49,7 +69,7 @@ class ServiceRegister implements IServiceLocatorAware
 	 */
 	public function has($identifier)
 	{
-		return $this->register->has($identifier);
+		return isset($this->register[$identifier]);
 	}
 	
 	

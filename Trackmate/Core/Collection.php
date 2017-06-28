@@ -15,9 +15,13 @@ class Collection implements Iterator
 		$this->items = [];
 	}
 	
-	public function add($identifier, $item)
+	public function add($identifier, $item, $params = [])
 	{
-		$this->items[$identifier] = $item;
+		die(var_dump($identifier, $item, $params));
+		$this->items[$identifier] = [
+			"class" => $item,
+			"deps" => $params
+		];
 	}
 	
 	public function remove($identifier)
@@ -27,7 +31,17 @@ class Collection implements Iterator
 	
 	public function get($identifier)
 	{
-		return $this->items[$identifier];
+		$class = $this->items[$identifier];
+		$object = $class["class"];
+		$deps = $class["deps"];
+		
+		$deps = explode(",", $deps);
+		
+		if( !is_null($deps) ){
+			return new $object($deps);
+		}
+		
+		return new $object();
 	}
 	
 	public function has($identifier)
