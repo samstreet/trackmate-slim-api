@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/dev.trackmate.com.iml" filepath="$PROJECT_DIR$/.idea/dev.trackmate.com.iml" />
-      <module fileurl="file:///private/var/www/dev.tackmate.com/.idea/dev.trackmate.com.iml" filepath="/private/var/www/dev.tackmate.com/.idea/dev.trackmate.com.iml" />
-    </modules>
-  </component>
-</project>
