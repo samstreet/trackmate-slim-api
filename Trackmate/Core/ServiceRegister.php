@@ -27,8 +27,7 @@ class ServiceRegister implements IServiceLocatorAware
 	 */
 	public function register($identifier, $service, $params= []){
 		$this->register[$identifier] = [
-			"class" => $service,
-			"deps" => $params
+			"class" => $service
 		];
 		
 		return $this->register;
@@ -41,25 +40,7 @@ class ServiceRegister implements IServiceLocatorAware
 	 */
 	public function get($identifier)
 	{
-		$class = $this->register[$identifier];
-		$object = $class["class"];
-		$deps = $class["deps"];
-		
-		if( !is_null($deps) ){
-			switch(count($deps)){
-				case 1:
-					return new $object($deps[0]);
-					break;
-				case 2:
-					return new $object($deps[0], $deps[1]);
-					break;
-				case 2:
-					return new $object($deps[0], $deps[1], $deps[2]);
-					break;
-				default:
-					return new $object();
-			}
-		}
+		return $this->register[$identifier]['class'];
 	}
 	
 	/**

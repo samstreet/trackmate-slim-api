@@ -44,28 +44,16 @@ Class Config
         
         $config["services"] = array(
         	"base" => [
-        		"class" => "Trackmate\Service\Base",
-				"deps" => [
-					new \PDO('mysql:host=127.0.0.1;dbname=trackmate;charset=utf8', 'trackmate','trackmate')
-				]
+        		"class" => "Trackmate\Service\Base"
 			],
 			"db" => [
-				"class" => "Trackmate\Service\DatabaseService",
-				"deps" => [
-					new \PDO('mysql:host=127.0.0.1;dbname=trackmate;charset=utf8', 'trackmate','trackmate')
-				]
+				"class" => "Trackmate\Service\DatabaseService"
 			],
 			"user" => [
-				"class" => "Trackmate\Service\UserService",
-				"deps" => [
-				
-				]
+				"class" => "Trackmate\Service\UserService"
 			],
 			"ride" => [
-				"class" => "Trackmate\Service\RideService",
-				"deps" => [
-				
-				]
+				"class" => "Trackmate\Service\RideService"
 			]
 		);
         
@@ -73,4 +61,14 @@ Class Config
         
         return $this;
     }
+	
+	/**
+	 * @return mixed
+	 */
+	public function getConfig()
+	{
+		return $this->config;
+	}
+ 
+ 
 }
