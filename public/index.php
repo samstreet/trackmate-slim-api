@@ -6,6 +6,7 @@ use Trackmate\Config\Config;
 use Trackmate\Core\ServiceRegister;
 use Trackmate\Core\ServiceLocator;
 use Trackmate\Core\Trackmate;
+use Trackmate\Core\Resolver;
 
 require '../vendor/autoload.php';
 
@@ -17,11 +18,11 @@ if($_SERVER['HTTP_HOST'] == "dev.trackmate.com" || $_SERVER['HTTP_HOST'] == "0.0
 }
 
 define('__ENVIRONMENT__', 'live');
+define('DB_DSN', 'mysql:host=127.0.0.1;dbname=trackmate;charset=utf8');
+define('DB_USER', 'trackmate');
+define('DB_PASS', 'trackmate');
 
-$core = (new Trackmate(new Config()))->bootstrap();
-
-echo "<pre>";
-die(var_dump($core->getServiceLocator()->get("user")));
+$core = (new Trackmate(new Config(), new Resolver()))->bootstrap();
 $services["sl"] = $core->getServiceLocator();
 
 $container = new \Slim\Container($services);
@@ -160,7 +161,7 @@ $app->post('/api/authenticate', function() use ($app){
 // get routes
 $app->get('/', function () use ($app) {
 	echo "<pre>";
-	die(var_dump($app->getContainer()->get("sl")));
+	die(var_dump($app->getContainer()));
 });
 
 $app->get('/api/ride/:token', function ($token) use ($app) {

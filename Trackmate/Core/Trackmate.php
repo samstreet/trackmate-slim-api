@@ -8,6 +8,7 @@ namespace Trackmate\Core;
 use Trackmate\Config\Config;
 use Trackmate\Core\ServiceRegister;
 use Trackmate\Core\ServiceLocator;
+use Trackmate\Core\Resolver;
 
 /**
  * Class Trackmate
@@ -24,9 +25,12 @@ class Trackmate
 	
 	protected $serviceLocator;
 	
-	public function __construct(Config $config)
+	protected $resolver;
+	
+	public function __construct(Config $config, Resolver $resolver)
 	{
 		$this->config = $config;
+		$this->resolver = $resolver;
 	}
 	
 	/**
@@ -35,20 +39,21 @@ class Trackmate
 	public function bootstrap()
 	{
 		$this->config = $this->config->bootstrap();
-		$this->services = $this->config->services;
-		$this->routes = $this->config->routes;
+		$this->services = $this->config->getConfig()["services"];
+		$this->routes = $this->config->getConfig()["routes"];
 		
 		$this->initServiceLocator();
 		
 		return $this;
 	}
 	
-	private function initServiceLocator(){
+	private function initServiceLocator()
+	{
 		$serviceRegister = new ServiceRegister();
-		$serviceRegister->register("base","Trackmate\Service\Base", [new \PDO('mysql:host=127.0.0.1;dbname=trackmate;charset=utf8', 'trackmate', 'trackmate')]);
-		$serviceRegister->register("db", "Trackmate\Service\DatabaseService", [new \PDO('mysql:host=127.0.0.1;dbname=trackmate;charset=utf8', 'trackmate', 'trackmate')]);
-		$serviceRegister->register("user", "Trackmate\Service\UserService");
-		$serviceRegister->register("ride", "Trackmate\Service\RideService");
+		foreach($this->services as $key => $service){
+			$this->services[$key] = $this->resolver->resolve($service["class"]);
+			$serviceRegister->register($key, $this->resolver->resolve($service["class"]));
+		}
 		
 		$serviceLocator = new ServiceLocator($serviceRegister);
 		

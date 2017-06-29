@@ -3,13 +3,14 @@
 namespace Trackmate\Service;
 
 use Trackmate\Config\Config;
+use Trackmate\Core\Database;
 
 class Base
 {
 	
 	protected $db;
 	
-	public function __construct(\PDO $conn)
+	public function __construct(Database $conn)
 	{
 		$this->db = $conn;
 	}

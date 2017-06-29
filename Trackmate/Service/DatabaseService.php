@@ -9,12 +9,13 @@
 namespace Trackmate\Service;
 
 use \PDO;
+use Trackmate\Core\Database;
 
 class DatabaseService {
 	
 	protected $db;
 	
-	public function __construct(\PDO $pdo)
+	public function __construct(Database $pdo)
 	{
 		$this->db = $pdo;
 	}
