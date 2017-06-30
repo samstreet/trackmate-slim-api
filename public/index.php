@@ -17,20 +17,23 @@ if($_SERVER['HTTP_HOST'] == "dev.trackmate.com" || $_SERVER['HTTP_HOST'] == "0.0
     define('__ENVIRONMENT__', 'live');
 }
 
-define('__ENVIRONMENT__', 'live');
 define('DB_DSN', 'mysql:host=127.0.0.1;dbname=trackmate;charset=utf8');
 define('DB_USER', 'trackmate');
 define('DB_PASS', 'trackmate');
 
-$core = (new Trackmate(new Config(), new Resolver()))->bootstrap();
-$services["sl"] = $core->getServiceLocator();
+$resolver = new Resolver();
+$core = $resolver->resolve("Trackmate\Core\Trackmate")->bootstrap();
+$container["sl"] = $core->getServiceLocator();
+$container["controllers"] = $core->getControllers();
 
-$container = new \Slim\Container($services);
+$container = new \Slim\Container($container);
 $app = new App($container);
+
+$container = $app->getContainer();
 
 // post routes
 $app->post(
-	'/api/new-ride',
+	'/api/ride/new',
 	function () use ($app){
 		$app->request()->headers->set("Accept", "application/json");
 		$base = $app->__get("base");
@@ -71,7 +74,7 @@ $app->post(
 );
 
 $app->post(
-	'/api/save-ride',
+	'/api/ride/save',
 	function () use ($app){
 		$app->request()->headers->set("Accept", "application/json");
 		$base = new BaseService();
@@ -96,7 +99,7 @@ $app->post(
 );
 
 $app->post(
-	'/api/new-user',
+	'/api/user/new',
 	function () use ($app){
 		$app->request()->headers->set("Accept", "application/json");
 		$base = new BaseService();
@@ -138,7 +141,7 @@ $app->post(
 );
 
 // authenticate a user
-$app->post('/api/authenticate', function() use ($app){
+$app->post('/api/user/authenticate', function() use ($app){
 	$app->request()->headers->set("Accept", "application/json");
 	$base = new BaseService();
 	$postData = json_decode($app->request()->getBody(), true);
@@ -159,9 +162,9 @@ $app->post('/api/authenticate', function() use ($app){
 });
 
 // get routes
-$app->get('/', function () use ($app) {
+$app->get('/', function () {
 	echo "<pre>";
-	die(var_dump($app->getContainer()));
+	die(var_dump($this->get("controllers")->get("UserController")));
 });
 
 $app->get('/api/ride/:token', function ($token) use ($app) {

@@ -8,5 +8,7 @@ namespace Trackmate\Controller;
 
 class UserController
 {
-	
+	public function __construct()
+	{
+	}
 }

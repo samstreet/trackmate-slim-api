@@ -12,6 +12,12 @@ Class Config
 {
 
     protected $config;
+    
+    protected $services;
+    
+    protected $routes;
+    
+    protected $controllers;
 
     /**
      * @return mixed
@@ -41,6 +47,7 @@ Class Config
         }
         
         $config["routes"] = [];
+		$config["controllers"] = $this->controllerBuilder();
         
         $config["services"] = array(
         	"base" => [
@@ -58,6 +65,9 @@ Class Config
 		);
         
         $this->config = $config;
+        $this->services = $config["services"];
+        $this->controllers = $config["controllers"];
+        $this->routes = $config["routes"];
         
         return $this;
     }
@@ -69,6 +79,47 @@ Class Config
 	{
 		return $this->config;
 	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getServices()
+	{
+		return $this->services;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getRoutes()
+	{
+		return $this->routes;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getControllers()
+	{
+		return $this->controllers;
+	}
+	
+	private function routeBuilder(){
+	
+	}
+	
+	private function serviceBuilder(){
+	
+	}
+	
+	private function controllerBuilder(){
+		return [
+			"UserController" => "Trackmate\Controller\UserController",
+			"RideController" => "Trackmate\Controller\RideController"
+		];
+	}
+	
+	
  
  
 }
