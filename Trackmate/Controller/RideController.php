@@ -8,5 +8,7 @@ namespace Trackmate\Controller;
 
 class RideController
 {
-	
+	public function __construct()
+	{
+	}
 }

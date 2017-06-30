@@ -9,6 +9,7 @@ use Trackmate\Config\Config;
 use Trackmate\Core\ServiceRegister;
 use Trackmate\Core\ServiceLocator;
 use Trackmate\Core\Resolver;
+use Trackmate\Core\Collection;
 
 /**
  * Class Trackmate
@@ -27,10 +28,13 @@ class Trackmate
 	
 	protected $resolver;
 	
-	public function __construct(Config $config, Resolver $resolver)
+	protected $controllers;
+	
+	public function __construct(Config $config, Resolver $resolver, Collection $collection)
 	{
 		$this->config = $config;
 		$this->resolver = $resolver;
+		$this->controllers = $collection;
 	}
 	
 	/**
@@ -43,6 +47,7 @@ class Trackmate
 		$this->routes = $this->config->getConfig()["routes"];
 		
 		$this->initServiceLocator();
+		$this->initControllers();
 		
 		return $this;
 	}
@@ -60,6 +65,15 @@ class Trackmate
 		$this->serviceLocator = $serviceLocator;
 	}
 	
+	public function initControllers()
+	{
+		$controllers = $this->config->getControllers();
+		
+		foreach($controllers as $alias => $controller){
+			$this->controllers->add($alias, $this->resolver->resolve($controller));
+		}
+	}
+	
 	/**
 	 * @return mixed
 	 */
@@ -67,6 +81,16 @@ class Trackmate
 	{
 		return $this->serviceLocator;
 	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getControllers()
+	{
+		return $this->controllers;
+	}
+	
+	
 	
 	
 }
