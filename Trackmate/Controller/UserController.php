@@ -6,9 +6,12 @@
 namespace Trackmate\Controller;
 
 
-class UserController
+use Slim\Http\Request;
+use Slim\Http\Response;
+
+class UserController extends BaseController
 {
-	public function __construct()
-	{
+	public function index(Request $request, Response $response){
+		die(var_dump($this->get("user")));
 	}
 }
