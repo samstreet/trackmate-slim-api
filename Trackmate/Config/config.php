@@ -2,13 +2,15 @@
 
 namespace Trackmate\Config;
 
+use Trackmate\Interfaces\IBootsrappable;
+
 /**
  * Created by PhpStorm.
  * User: user
  * Date: 26/05/15
  * Time: 08:05
  */
-Class Config
+Class Config implements IBootsrappable
 {
 
     protected $config;
@@ -114,6 +116,7 @@ Class Config
 	
 	private function controllerBuilder(){
 		return [
+			"BaseController" => "Trackmate\Controller\UserController",
 			"UserController" => "Trackmate\Controller\UserController",
 			"RideController" => "Trackmate\Controller\RideController"
 		];

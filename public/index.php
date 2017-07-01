@@ -22,7 +22,7 @@ define('DB_USER', 'trackmate');
 define('DB_PASS', 'trackmate');
 
 $resolver = new Resolver();
-$core = $resolver->resolve("Trackmate\Core\Trackmate")->bootstrap();
+$core = $resolver->resolve("Trackmate\Trackmate")->bootstrap();
 $container["sl"] = $core->getServiceLocator();
 $container["controllers"] = $core->getControllers();
 
@@ -162,10 +162,7 @@ $app->post('/api/user/authenticate', function() use ($app){
 });
 
 // get routes
-$app->get('/', function () {
-	echo "<pre>";
-	die(var_dump($this->get("controllers")->get("UserController")));
-});
+$app->get('/', get_class($app->getContainer()->get("controllers")->get("UserController")) . ":index");
 
 $app->get('/api/ride/:token', function ($token) use ($app) {
 	$app->request()->headers->set("Accept", "application/json");

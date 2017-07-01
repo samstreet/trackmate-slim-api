@@ -3,20 +3,21 @@
  * @author Sam Street <samstreet@evolutionfunding.com>
  */
 
-namespace Trackmate\Core;
+namespace Trackmate;
 
 use Trackmate\Config\Config;
 use Trackmate\Core\ServiceRegister;
 use Trackmate\Core\ServiceLocator;
 use Trackmate\Core\Resolver;
 use Trackmate\Core\Collection;
+use Trackmate\Interfaces\IBootsrappable;
 
 /**
  * Class Trackmate
  * The default Trackmate instance
  * @package Trackmate\Core
  */
-class Trackmate
+class Trackmate implements IBootsrappable
 {
 	protected $config;
 	
