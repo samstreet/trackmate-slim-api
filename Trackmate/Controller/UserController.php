@@ -12,6 +12,8 @@ use Slim\Http\Response;
 class UserController extends BaseController
 {
 	public function index(Request $request, Response $response){
-		die(var_dump($this->get("user")));
+		die(var_dump($this->getUserService()));
 	}
+	
+	public function autenticate
 }
