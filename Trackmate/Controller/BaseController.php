@@ -32,5 +32,9 @@ class BaseController implements IServiceLocatorAware
 		return $this->app->get("sl")->has($identifier);
 	}
 	
+	public function getUserService(){
+		return $this->get("user");
+	}
+	
 	
 }
