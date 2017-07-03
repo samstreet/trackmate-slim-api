@@ -8,7 +8,7 @@ namespace Trackmate\Controller;
 use Slim\Container;
 use Trackmate\Interfaces\IServiceLocatorAware;
 
-class BaseController implements IServiceLocatorAware
+abstract class BaseController implements IServiceLocatorAware
 {
 	protected $app;
 	

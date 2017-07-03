@@ -31,47 +31,51 @@ $app = new App($container);
 
 $container = $app->getContainer();
 
+$app->group("/api/ride", function() use ($app){
+	$app->post("/new", get_class($app->getContainer()->get("controllers")->get("RideController")) . ":create");
+});
+
 // post routes
-$app->post(
-	'/api/ride/new',
-	function () use ($app){
-		$app->request()->headers->set("Accept", "application/json");
-		$base = $app->__get("base");
-		$postData = json_decode($app->request()->getBody(), true);
-		if(!array_key_exists('user', $postData)){
-			$app->response()->header("Content-Type", "application/json");
-			$app->status($app->response()->getStatus());
-			$string = json_encode($base->standardErrorResponse("Param 'user' is required and cannot be null", $app->response()->getStatus()));
-			return $app->response()->setBody($string);
-		}
-		
-		// get the required user posted data anc conv to object
-		$user = $base->getUserService()->userArrayToUserObject($postData['user']);
-		
-		// make a new ride with the user details attached
-		$ride = $base->getRideService()->newRide($user);
-		
-		// save the ride
-		$save = $base->getDatabaseService()->saveNewRide($ride);
-		
-		// convert it all back to an array so we can encode it
-		$user = $base->getUserService()->userObjectToArray($user);
-		$ride = $base->getRideService()->rideObjectToArray($ride, $user);
-		
-		// if save is successful encode the data and return else return an error response
-		if($save){
-			$app->response()->header("Content-Type", "application/json");
-			$app->status($app->response()->getStatus());
-			$string = json_encode($base->standardSuccessResponse(true, $app->response()->getStatus(), $ride));
-			return $app->response()->setBody($string);
-			
-		} else {
-			$app->response()->header("Content-Type", "application/json");
-			$app->status(500);
-			echo json_encode($base->standardErrorResponse("Save failed", 500));
-		}
-	}
-);
+//$app->post(
+//	'/api/ride/new',
+//	function () use ($app){
+//		$app->request()->headers->set("Accept", "application/json");
+//		$base = $app->__get("base");
+//		$postData = json_decode($app->request()->getBody(), true);
+//		if(!array_key_exists('user', $postData)){
+//			$app->response()->header("Content-Type", "application/json");
+//			$app->status($app->response()->getStatus());
+//			$string = json_encode($base->standardErrorResponse("Param 'user' is required and cannot be null", $app->response()->getStatus()));
+//			return $app->response()->setBody($string);
+//		}
+//
+//		// get the required user posted data anc conv to object
+//		$user = $base->getUserService()->userArrayToUserObject($postData['user']);
+//
+//		// make a new ride with the user details attached
+//		$ride = $base->getRideService()->newRide($user);
+//
+//		// save the ride
+//		$save = $base->getDatabaseService()->saveNewRide($ride);
+//
+//		// convert it all back to an array so we can encode it
+//		$user = $base->getUserService()->userObjectToArray($user);
+//		$ride = $base->getRideService()->rideObjectToArray($ride, $user);
+//
+//		// if save is successful encode the data and return else return an error response
+//		if($save){
+//			$app->response()->header("Content-Type", "application/json");
+//			$app->status($app->response()->getStatus());
+//			$string = json_encode($base->standardSuccessResponse(true, $app->response()->getStatus(), $ride));
+//			return $app->response()->setBody($string);
+//
+//		} else {
+//			$app->response()->header("Content-Type", "application/json");
+//			$app->status(500);
+//			echo json_encode($base->standardErrorResponse("Save failed", 500));
+//		}
+//	}
+//);
 
 $app->post(
 	'/api/ride/save',
@@ -141,25 +145,7 @@ $app->post(
 );
 
 // authenticate a user
-$app->post('/api/user/authenticate', function() use ($app){
-	$app->request()->headers->set("Accept", "application/json");
-	$base = new BaseService();
-	$postData = json_decode($app->request()->getBody(), true);
-	
-	$login = $base->getDatabaseService()->authenticate($postData);
-	if($login){
-		$app->response()->header("Content-Type", "application/json");
-		$app->status(200);
-		//$data = array("user" => $login['data']);
-		$string = json_encode($base->standardSuccessResponse("true", 200, $login['data']));// return a response object.
-		return $app->response()->setBody($string);
-	}
-	
-	$app->response()->header("Content-Type", "application/json");
-	$app->status(401);
-	$string =  json_encode($base->standardErrorResponse("Authentication failed", 500));
-	return $app->response()->setBody($string);
-});
+$app->post('/api/authenticate', get_class($app->getContainer()->get("controllers")->get("AuthController")) . ":auth");
 
 // get routes
 $app->get('/', get_class($app->getContainer()->get("controllers")->get("UserController")) . ":index");
