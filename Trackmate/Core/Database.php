@@ -15,13 +15,13 @@ use \PDO;
  */
 class Database extends PDO
 {
-	
-	protected $dsn = DB_DSN;
-	protected $username = DB_USER;
-	protected $password = DB_PASS;
-	
-	public function __construct()
-	{
-		parent::__construct($this->dsn, $this->username, $this->password);
-	}
+    
+    protected $dsn = DB_DSN;
+    protected $username = DB_USER;
+    protected $password = DB_PASS;
+    
+    public function __construct()
+    {
+        parent::__construct($this->dsn, $this->username, $this->password);
+    }
 }

@@ -9,7 +9,8 @@ namespace Trackmate\Models;
  * Time: 22:43
  */
 
-class Ride {
+class Ride
+{
     protected $_id;
     protected $_startTime;
     protected $_endTime;
@@ -20,7 +21,7 @@ class Ride {
     protected $_viewableByPublic = true; // if yes then anyone can see, if false then you need to be authenticated to see
     protected $_password;
     protected $_user;
-
+    
     /**
      * @return mixed
      */
@@ -28,7 +29,7 @@ class Ride {
     {
         return $this->_id;
     }
-
+    
     /**
      * @param mixed $id
      */
@@ -36,7 +37,7 @@ class Ride {
     {
         $this->_id = $id;
     }
-
+    
     /**
      * @return mixed
      */
@@ -44,7 +45,7 @@ class Ride {
     {
         return $this->_startTime;
     }
-
+    
     /**
      * @param mixed $startTime
      */
@@ -52,7 +53,7 @@ class Ride {
     {
         $this->_startTime = $startTime;
     }
-
+    
     /**
      * @return mixed
      */
@@ -60,7 +61,7 @@ class Ride {
     {
         return $this->_endTime;
     }
-
+    
     /**
      * @param mixed $endTime
      */
@@ -68,7 +69,7 @@ class Ride {
     {
         $this->_endTime = $endTime;
     }
-
+    
     /**
      * @return mixed
      */
@@ -76,7 +77,7 @@ class Ride {
     {
         return $this->_duration;
     }
-
+    
     /**
      * @param mixed $duration
      */
@@ -84,7 +85,7 @@ class Ride {
     {
         $this->_duration = $duration;
     }
-
+    
     /**
      * @return mixed
      */
@@ -92,7 +93,7 @@ class Ride {
     {
         return $this->_distance;
     }
-
+    
     /**
      * @param mixed $distance
      */
@@ -100,7 +101,7 @@ class Ride {
     {
         $this->_distance = $distance;
     }
-
+    
     /**
      * @return mixed
      */
@@ -108,7 +109,7 @@ class Ride {
     {
         return $this->_token;
     }
-
+    
     /**
      * @param mixed $token
      */
@@ -116,7 +117,7 @@ class Ride {
     {
         $this->_token = $token;
     }
-
+    
     /**
      * @return array
      */
@@ -124,7 +125,7 @@ class Ride {
     {
         return $this->_latAndLonPoints;
     }
-
+    
     /**
      * @param array $latAndLonPoints
      */
@@ -132,7 +133,7 @@ class Ride {
     {
         $this->_latAndLonPoints = $latAndLonPoints;
     }
-
+    
     /**
      * @return boolean
      */
@@ -140,7 +141,7 @@ class Ride {
     {
         return $this->_viewableByPublic;
     }
-
+    
     /**
      * @param boolean $viewableByPublic
      */
@@ -148,7 +149,7 @@ class Ride {
     {
         $this->_viewableByPublic = $viewableByPublic;
     }
-
+    
     /**
      * @return mixed
      */
@@ -156,7 +157,7 @@ class Ride {
     {
         return $this->_password;
     }
-
+    
     /**
      * @param mixed $password
      */
@@ -164,7 +165,7 @@ class Ride {
     {
         $this->_password = $password;
     }
-
+    
     /**
      * @return mixed
      */
@@ -172,7 +173,7 @@ class Ride {
     {
         return $this->_user;
     }
-
+    
     /**
      * @param mixed $user
      */
@@ -180,6 +181,6 @@ class Ride {
     {
         $this->_user = $user;
     } // user object
-
-
+    
+    
 }

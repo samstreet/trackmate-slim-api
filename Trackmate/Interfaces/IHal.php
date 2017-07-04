@@ -11,22 +11,22 @@ namespace Trackmate\Interfaces;
  */
 interface IHal
 {
-	/**
-	 * Outut the Hal structure
-	 * @return mixed
-	 */
-	public function output();
-	
-	/**
-	 * Generate a Hal structure
-	 * @return mixed
-	 */
-	public function generate();
-	
-	/**
-	 * Make Hal from data
-	 * @param $data
-	 * @return mixed
-	 */
-	public function from($data);
+    /**
+     * Outut the Hal structure
+     * @return mixed
+     */
+    public function output();
+    
+    /**
+     * Generate a Hal structure
+     * @return mixed
+     */
+    public function generate();
+    
+    /**
+     * Make Hal from data
+     * @param $data
+     * @return mixed
+     */
+    public function from($data);
 }
