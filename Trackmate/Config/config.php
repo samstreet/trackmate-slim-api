@@ -12,7 +12,7 @@ use Trackmate\Interfaces\IBootsrappable;
  */
 Class Config implements IBootsrappable
 {
-
+    
     protected $config;
     
     protected $services;
@@ -20,13 +20,13 @@ Class Config implements IBootsrappable
     protected $routes;
     
     protected $controllers;
-
+    
     /**
      * @return mixed
      */
     public function bootstrap()
     {
-        if(__ENVIRONMENT__ == 'dev') {
+        if (__ENVIRONMENT__ == 'dev') {
             $config = array(
                 'database' => array(
                     'host' => '127.0.0.1',
@@ -49,22 +49,25 @@ Class Config implements IBootsrappable
         }
         
         $config["routes"] = [];
-		$config["controllers"] = $this->controllerBuilder();
+        $config["controllers"] = $this->controllerBuilder();
         
         $config["services"] = array(
-        	"base" => [
-        		"class" => "Trackmate\Service\Base"
-			],
-			"db" => [
-				"class" => "Trackmate\Service\DatabaseService"
-			],
-			"user" => [
-				"class" => "Trackmate\Service\UserService"
-			],
-			"ride" => [
-				"class" => "Trackmate\Service\RideService"
-			]
-		);
+            "base" => [
+                "class" => "Trackmate\Service\Base"
+            ],
+            "db" => [
+                "class" => "Trackmate\Service\DatabaseService"
+            ],
+            "user" => [
+                "class" => "Trackmate\Service\UserService"
+            ],
+            "ride" => [
+                "class" => "Trackmate\Service\RideService"
+            ],
+            "auth" => [
+                "class" => "Trackmate\Service\AuthenticationService"
+            ]
+        );
         
         $this->config = $config;
         $this->services = $config["services"];
@@ -73,56 +76,58 @@ Class Config implements IBootsrappable
         
         return $this;
     }
-	
-	/**
-	 * @return mixed
-	 */
-	public function getConfig()
-	{
-		return $this->config;
-	}
-	
-	/**
-	 * @return mixed
-	 */
-	public function getServices()
-	{
-		return $this->services;
-	}
-	
-	/**
-	 * @return mixed
-	 */
-	public function getRoutes()
-	{
-		return $this->routes;
-	}
-	
-	/**
-	 * @return mixed
-	 */
-	public function getControllers()
-	{
-		return $this->controllers;
-	}
-	
-	private function routeBuilder(){
-	
-	}
-	
-	private function serviceBuilder(){
-	
-	}
-	
-	private function controllerBuilder(){
-		return [
-			"BaseController" => "Trackmate\Controller\UserController",
-			"UserController" => "Trackmate\Controller\UserController",
-			"RideController" => "Trackmate\Controller\RideController"
-		];
-	}
-	
-	
- 
- 
+    
+    /**
+     * @return mixed
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getServices()
+    {
+        return $this->services;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getRoutes()
+    {
+        return $this->routes;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getControllers()
+    {
+        return $this->controllers;
+    }
+    
+    private function routeBuilder()
+    {
+    
+    }
+    
+    private function serviceBuilder()
+    {
+    
+    }
+    
+    private function controllerBuilder()
+    {
+        return [
+            "BaseController" => "Trackmate\Controller\BaseController",
+            "AuthController" => "Trackmate\Controller\AuthController",
+            "UserController" => "Trackmate\Controller\UserController",
+            "RideController" => "Trackmate\Controller\RideController"
+        ];
+    }
+    
+    
 }

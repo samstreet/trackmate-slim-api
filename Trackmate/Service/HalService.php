@@ -8,5 +8,5 @@ namespace Trackmate\Service;
 
 class HalService
 {
-	
+
 }

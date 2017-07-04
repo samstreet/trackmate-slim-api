@@ -5,11 +5,18 @@
 
 namespace Trackmate\Controller;
 
+use Slim\Http\Request;
+use Slim\Http\Response;
 
+/**
+ * Class AuthController
+ * @package Trackmate\Controller
+ */
 class AuthController extends BaseController
 {
-	public function authenticate(Request $request, Response $response){
-	
+    public function authenticate(Request $request, Response $response)
+    {
+        $request->withHeader("Accept", "application/json");
 //		$app->request()->headers->set("Accept", "application/json");
 //		$base = new BaseService();
 //		$postData = json_decode($app->request()->getBody(), true);
@@ -27,8 +34,10 @@ class AuthController extends BaseController
 //		$app->status(401);
 //		$string =  json_encode($base->standardErrorResponse("Authentication failed", 500));
 //		return $app->response()->setBody($string);
-	
-	}
-	
-	public function refresh(Request $request, Response $response){}
+    
+    }
+    
+    public function refresh(Request $request, Response $response)
+    {
+    }
 }

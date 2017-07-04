@@ -9,7 +9,8 @@ namespace Trackmate\Models;
  * Time: 22:39
  */
 
-class User {
+class User
+{
     protected $_id;
     protected $_firstName;
     protected $_lastName;
@@ -19,11 +20,10 @@ class User {
     protected $_email;
     protected $_access_token;
     protected $_refresh_token;
-
-
-
+    
+    
     // public getters and setters
-
+    
     /**
      * @return mixed
      */
@@ -31,7 +31,7 @@ class User {
     {
         return $this->_id;
     }
-
+    
     /**
      * @param mixed $id
      */
@@ -39,7 +39,7 @@ class User {
     {
         $this->_id = $id;
     }
-
+    
     /**
      * @return mixed
      */
@@ -47,7 +47,7 @@ class User {
     {
         return $this->_firstName;
     }
-
+    
     /**
      * @param mixed $firstName
      */
@@ -55,7 +55,7 @@ class User {
     {
         $this->_firstName = $firstName;
     }
-
+    
     /**
      * @return mixed
      */
@@ -63,7 +63,7 @@ class User {
     {
         return $this->_lastName;
     }
-
+    
     /**
      * @param mixed $lastName
      */
@@ -71,7 +71,7 @@ class User {
     {
         $this->_lastName = $lastName;
     }
-
+    
     /**
      * @return array
      */
@@ -79,7 +79,7 @@ class User {
     {
         return $this->_rides;
     }
-
+    
     /**
      * @param array $rides
      */
@@ -87,7 +87,7 @@ class User {
     {
         $this->_rides = $rides;
     }
-
+    
     /**
      * @return mixed
      */
@@ -95,7 +95,7 @@ class User {
     {
         return $this->_username;
     }
-
+    
     /**
      * @param mixed $username
      */
@@ -103,7 +103,7 @@ class User {
     {
         $this->_username = $username;
     }
-
+    
     /**
      * @return mixed
      */
@@ -111,7 +111,7 @@ class User {
     {
         return $this->_password;
     }
-
+    
     /**
      * @param mixed $password
      */
@@ -119,7 +119,7 @@ class User {
     {
         $this->_password = $password;
     }
-
+    
     /**
      * @return mixed
      */
@@ -127,7 +127,7 @@ class User {
     {
         return $this->_email;
     }
-
+    
     /**
      * @param mixed $email
      */
@@ -135,7 +135,7 @@ class User {
     {
         $this->_email = $email;
     }
-
+    
     /**
      * @return mixed
      */
@@ -143,7 +143,7 @@ class User {
     {
         return $this->_access_token;
     }
-
+    
     /**
      * @param mixed $access_token
      */
@@ -151,7 +151,7 @@ class User {
     {
         $this->_access_token = $access_token;
     }
-
+    
     /**
      * @return mixed
      */
@@ -159,7 +159,7 @@ class User {
     {
         return $this->_refresh_token;
     }
-
+    
     /**
      * @param mixed $refresh_token
      */
@@ -167,8 +167,6 @@ class User {
     {
         $this->_refresh_token = $refresh_token;
     }
-
-
-
-
+    
+    
 }

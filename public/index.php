@@ -145,7 +145,7 @@ $app->post(
 );
 
 // authenticate a user
-$app->post('/api/authenticate', get_class($app->getContainer()->get("controllers")->get("AuthController")) . ":auth");
+$app->post('/api/authenticate', get_class($app->getContainer()->get("controllers")->get("AuthController")) . ":authenticate");
 
 // get routes
 $app->get('/', get_class($app->getContainer()->get("controllers")->get("UserController")) . ":index");
