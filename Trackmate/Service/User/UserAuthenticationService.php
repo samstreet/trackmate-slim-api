@@ -3,17 +3,17 @@
  * @author Sam Street <samstreet.dev@gmail.com>
  */
 
-namespace Trackmate\Service;
+namespace Trackmate\Service\User;
 
+
+use Trackmate\Service\Base;
 use Trackmate\Interfaces\Authentication\IAuthentication;
 
 /**
- * Class AuthenticationService
- * @package Trackmate\Service
- *
- * Used to hndle authentication of users
+ * Class UserAuthenticationService
+ * @package Trackmate\Service\User
  */
-class AuthenticationService extends Base implements IAuthentication
+class UserAuthenticationService extends Base implements IAuthentication
 {
     /**
      * @inheritDoc
