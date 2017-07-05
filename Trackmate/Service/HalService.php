@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Sam Street <samstreet@evolutionfunding.com>
+ * @author Sam Street <samstreet.dev@gmail.com>
  */
 
 namespace Trackmate\Service;

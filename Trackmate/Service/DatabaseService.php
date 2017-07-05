@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: user
- * Date: 24/05/15
- * Time: 22:52
+ * @author Sam Street <samstreet.dev@gmail.com>
  */
 
 namespace Trackmate\Service;

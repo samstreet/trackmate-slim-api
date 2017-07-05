@@ -3,10 +3,7 @@
 namespace Trackmate\Models;
 
 /**
- * Created by PhpStorm.
- * User: user
- * Date: 24/05/15
- * Time: 22:39
+ * @author Sam Street <samstreet.dev@gmail.com>
  */
 
 class User

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Sam Street <samstreet.dev@gmail.com>
+ */
+
 namespace Trackmate\Config;
 
 use Trackmate\Interfaces\IBootsrappable;

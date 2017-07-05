@@ -1,25 +1,35 @@
 <?php
 
+/**
+ * @author Sam Street <samstreet.dev@gmail.com>
+ */
+
 namespace Trackmate\Service;
 
 use Trackmate\Config\Config;
 use Trackmate\Core\Database;
+use Trackmate\Core\Resolver;
+use Trackmate\Exceptions\MethodNotAllowedException;
+use Trackmate\Interfaces\IServiceLocatorAware;
 
-class Base
+/**
+ * Class Base
+ * @package Trackmate\Service
+ */
+class Base implements IServiceLocatorAware
 {
     
     protected $db;
     
-    public function __construct(Database $conn)
+    protected $resolver;
+    
+    protected $_config = null;
+    
+    public function __construct(Database $conn, Resolver $resolver)
     {
         $this->db = $conn;
+        $this->resolver = $resolver;
     }
-    
-    // base class
-    protected $_databaseService = null;
-    protected $_RideService = null;
-    protected $_userService = null;
-    protected $_config = null;
     
     // could cache
     public function getConfig()
@@ -30,30 +40,44 @@ class Base
     
     public function getDatabaseService()
     {
-        if ($this->_databaseService == null) {
-            $this->_databaseService = new DatabaseService($this->db);
-        }
-        
-        return $this->_databaseService;
+        return  $this->resolver->resolve(Database::class);
     }
     
     public function getRideService()
     {
-        if ($this->_RideService == null) {
-            $this->_RideService = new RideService();
-        }
-        
-        return $this->_RideService;
+        return $this->resolver->resolve(RideService::class);
     }
     
     public function getUserService()
     {
-        if ($this->_userService == null) {
-            $this->_userService = new UserService();
-        }
-        
-        return $this->_userService;
+        return $this->resolver->resolve(UserService::class);
     }
+    
+    /**
+     * @inheritDoc
+     */
+    public function get($identifier)
+    {
+        $this->resolver->resolve($identifier);
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function register($identifier, $service, $params = [])
+    {
+        throw new MethodNotAllowedException();
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function has($identifier)
+    {
+        $class = $this->resolver->resolve($identifier);
+        return null != $class;
+    }
+    
     
     public function standardErrorResponse($error, $status, $success = false)
     {

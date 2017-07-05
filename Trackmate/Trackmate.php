@@ -1,6 +1,7 @@
 <?php
+
 /**
- * @author Sam Street <samstreet@evolutionfunding.com>
+ * @author Sam Street <samstreet.dev@gmail.com>
  */
 
 namespace Trackmate;
@@ -11,6 +12,7 @@ use Trackmate\Core\ServiceLocator;
 use Trackmate\Core\Resolver;
 use Trackmate\Core\Collection;
 use Trackmate\Interfaces\IBootsrappable;
+use Trackmate\Factory\ServiceLocatorFactory;
 
 /**
  * Class Trackmate
@@ -61,9 +63,7 @@ class Trackmate implements IBootsrappable
             $serviceRegister->register($key, $this->resolver->resolve($service["class"]));
         }
         
-        $serviceLocator = new ServiceLocator($serviceRegister);
-        
-        $this->serviceLocator = $serviceLocator;
+        $this->serviceLocator = ServiceLocatorFactory::make($serviceRegister);
     }
     
     public function initControllers()
