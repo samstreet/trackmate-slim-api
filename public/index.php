@@ -5,8 +5,10 @@ use Slim\App;
 use Trackmate\Config\Config;
 use Trackmate\Core\ServiceRegister;
 use Trackmate\Core\ServiceLocator;
-use Trackmate\Core\Trackmate;
+use Trackmate\Trackmate;
 use Trackmate\Core\Resolver;
+use Trackmate\Controller\UserController;
+use \Trackmate\Controller\AuthController;
 
 require '../vendor/autoload.php';
 
@@ -145,10 +147,10 @@ $app->post(
 );
 
 // authenticate a user
-$app->post('/api/authenticate', get_class($app->getContainer()->get("controllers")->get("AuthController")) . ":authenticate");
+$app->post('/api/authenticate', AuthController::class . ":authenticate");
 
 // get routes
-$app->get('/', get_class($app->getContainer()->get("controllers")->get("UserController")) . ":index");
+$app->get('/', UserController::class . ":index");
 
 $app->get('/api/ride/:token', function ($token) use ($app) {
 	$app->request()->headers->set("Accept", "application/json");

@@ -14,7 +14,7 @@ class UserController extends BaseController implements ICrud
 {
     public function index(Request $request, Response $response)
     {
-        die(var_dump($this->getUserService()));
+        die(var_dump($this));
     }
     
     public function create(Request $request, Response $response)

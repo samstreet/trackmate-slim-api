@@ -7,6 +7,10 @@ namespace Trackmate\Controller;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Http\Stream;
+use Trackmate\Service\HalService;
+use Trackmate\Service\User\UserAuthenticationService;
+use Exception;
 
 /**
  * Class AuthController
@@ -17,24 +21,25 @@ class AuthController extends BaseController
     public function authenticate(Request $request, Response $response)
     {
         $request->withHeader("Accept", "application/json");
-//		$app->request()->headers->set("Accept", "application/json");
-//		$base = new BaseService();
-//		$postData = json_decode($app->request()->getBody(), true);
-//
-//		$login = $base->getDatabaseService()->authenticate($postData);
-//		if($login){
-//			$app->response()->header("Content-Type", "application/json");
-//			$app->status(200);
-//			//$data = array("user" => $login['data']);
-//			$string = json_encode($base->standardSuccessResponse("true", 200, $login['data']));// return a response object.
-//			return $app->response()->setBody($string);
-//		}
-//
-//		$app->response()->header("Content-Type", "application/json");
-//		$app->status(401);
-//		$string =  json_encode($base->standardErrorResponse("Authentication failed", 500));
-//		return $app->response()->setBody($string);
-    
+        $postData = json_decode($request->getBody(), true);
+        $response->withHeader("Content-Type", "application/json");
+        $body = null;
+        
+        try {
+            $login = $this->get(UserAuthenticationService::class)->authenticate($postData['username'], $postData['password']);
+            http_response_code(200);
+            $body = $this->get(HalService::class)->from($login);
+        } catch (Exception $e) {
+            http_response_code($e->getCode());
+            $body = [
+                "error" => $e->getMessage()
+            ];
+        }
+
+        $response = $response->withJson($body);
+        
+        return $response;
+        
     }
     
     public function refresh(Request $request, Response $response)

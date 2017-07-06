@@ -58,7 +58,7 @@ class Base implements IServiceLocatorAware
      */
     public function get($identifier)
     {
-        $this->resolver->resolve($identifier);
+        return $this->resolver->resolve($identifier);
     }
     
     /**
