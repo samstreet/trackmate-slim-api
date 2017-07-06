@@ -7,13 +7,14 @@
 namespace Trackmate\Config;
 
 use Trackmate\Interfaces\IBootsrappable;
+use Trackmate\Service\Base;
+use Trackmate\Service\DatabaseService;
+use Trackmate\Service\HalService;
+use Trackmate\Service\AuthenticationService;
+use Trackmate\Service\RideService;
+use Trackmate\Service\User\UserAuthenticationService;
+use Trackmate\Service\UserService;
 
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 26/05/15
- * Time: 08:05
- */
 Class Config implements IBootsrappable
 {
     
@@ -56,20 +57,26 @@ Class Config implements IBootsrappable
         $config["controllers"] = $this->controllerBuilder();
         
         $config["services"] = array(
-            "base" => [
+            Base::class => [
                 "class" => "Trackmate\Service\Base"
             ],
-            "db" => [
+            DatabaseService::class => [
                 "class" => "Trackmate\Service\DatabaseService"
             ],
-            "user" => [
+            UserService::class => [
                 "class" => "Trackmate\Service\UserService"
             ],
-            "ride" => [
+            RideService::class => [
                 "class" => "Trackmate\Service\RideService"
             ],
-            "auth" => [
+            AuthenticationService::class => [
                 "class" => "Trackmate\Service\AuthenticationService"
+            ],
+            UserAuthenticationService::class => [
+                "class" => "Trackmate\Service\User\UserAuthenticationService"
+            ],
+            HalService::class => [
+                "class" => "Trackmate\Service\HalService"
             ]
         );
         

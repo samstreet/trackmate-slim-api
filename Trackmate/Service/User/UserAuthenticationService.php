@@ -6,6 +6,7 @@
 namespace Trackmate\Service\User;
 
 
+use Trackmate\Service\AuthenticationService;
 use Trackmate\Service\Base;
 use Trackmate\Interfaces\Authentication\IAuthentication;
 
@@ -20,7 +21,7 @@ class UserAuthenticationService extends Base implements IAuthentication
      */
     public function authenticate($username, $password)
     {
-        // TODO: Implement authenticate() method.
+        return $this->get(AuthenticationService::class)->authenticate($username, $password);
     }
     
     /**

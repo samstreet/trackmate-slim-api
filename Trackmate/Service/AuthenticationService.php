@@ -5,6 +5,8 @@
 
 namespace Trackmate\Service;
 
+use Trackmate\Core\Database;
+use Trackmate\Core\Resolver;
 use Trackmate\Interfaces\Authentication\IAuthentication;
 
 /**
@@ -15,12 +17,18 @@ use Trackmate\Interfaces\Authentication\IAuthentication;
  */
 class AuthenticationService extends Base implements IAuthentication
 {
+    
     /**
      * @inheritDoc
      */
     public function authenticate($username, $password)
     {
-        // TODO: Implement authenticate() method.
+        return [
+            "user" => [
+                "id" => "1",
+                "name" => "Sam Street"
+            ]
+        ];
     }
     
     /**
