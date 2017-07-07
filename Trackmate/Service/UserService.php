@@ -10,7 +10,13 @@ use Trackmate\Models\User;
 
 class UserService
 {
-    
+    /**
+     * Convert an array to a user object
+     *
+     * @param array $user data to make a user
+     *
+     * @return User
+     */
     public function userArrayToUserObject($user)
     {
         $convUser = new User();
@@ -24,6 +30,13 @@ class UserService
         return $convUser;
     }
     
+    /**
+     * Convert a user object to an array
+     *
+     * @param User $user the user object to convert
+     *
+     * @return array
+     */
     public function userObjectToArray(User $user)
     {
         return array(
@@ -42,13 +55,4 @@ class UserService
         return $token = bin2hex(openssl_random_pseudo_bytes(32));
     }
     
-    public function isAuthTokenValid()
-    {
-        return true;
-    }
-    
-    public function isRefreshTokenValid()
-    {
-        return true;
-    }
 }

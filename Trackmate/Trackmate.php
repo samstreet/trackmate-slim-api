@@ -58,9 +58,9 @@ class Trackmate implements IBootsrappable
     private function initServiceLocator()
     {
         $serviceRegister = new ServiceRegister();
-        foreach ($this->services as $key => $service) {
-            $this->services[$key] = $this->resolver->resolve($service["class"]);
-            $serviceRegister->register($key, $this->resolver->resolve($service["class"]));
+        foreach ($this->services as $service) {
+            $this->services[$service] = $this->resolver->resolve($service);
+            $serviceRegister->register($service, $this->resolver->resolve($service));
         }
         
         $this->serviceLocator = ServiceLocatorFactory::make($serviceRegister);
