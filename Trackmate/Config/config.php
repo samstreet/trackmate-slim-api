@@ -57,27 +57,13 @@ Class Config implements IBootsrappable
         $config["controllers"] = $this->controllerBuilder();
         
         $config["services"] = array(
-            Base::class => [
-                "class" => "Trackmate\Service\Base"
-            ],
-            DatabaseService::class => [
-                "class" => "Trackmate\Service\DatabaseService"
-            ],
-            UserService::class => [
-                "class" => "Trackmate\Service\UserService"
-            ],
-            RideService::class => [
-                "class" => "Trackmate\Service\RideService"
-            ],
-            AuthenticationService::class => [
-                "class" => "Trackmate\Service\AuthenticationService"
-            ],
-            UserAuthenticationService::class => [
-                "class" => "Trackmate\Service\User\UserAuthenticationService"
-            ],
-            HalService::class => [
-                "class" => "Trackmate\Service\HalService"
-            ]
+            Base::class,
+            DatabaseService::class,
+            UserService::class,
+            RideService::class,
+            AuthenticationService::class,
+            UserAuthenticationService::class,
+            HalService::class
         );
         
         $this->config = $config;

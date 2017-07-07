@@ -41,5 +41,9 @@ class BaseController implements IServiceLocatorAware
         return $this->get("auth");
     }
     
+    public function app()
+    {
+        return $this->app;
+    }
     
 }
