@@ -7,7 +7,7 @@ namespace Trackmate\Controller;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Slim\Http\Stream;
+use NilPortugues\Api\Problem\ApiProblemResponse;
 use Trackmate\Service\HalService;
 use Trackmate\Service\User\UserAuthenticationService;
 use Exception;
@@ -26,16 +26,23 @@ class AuthController extends BaseController
         $body = null;
         
         try {
-            $login = $this->get(UserAuthenticationService::class)->authenticate($postData['username'], $postData['password']);
+            $login = $this->get(UserAuthenticationService::class)
+                ->authenticate($postData['username'], $postData['password']);
+            
             http_response_code(200);
             $body = $this->get(HalService::class)->from($login);
+            
         } catch (Exception $e) {
-            http_response_code($e->getCode());
-            $body = [
-                "error" => $e->getMessage()
-            ];
+            
+            return ApiProblemResponse::json(
+                403,
+                "Invalid Credentials",
+                "Authentication Error",
+                "error.authentication"
+            );
+            
         }
-
+        
         $response = $response->withJson($body);
         
         return $response;
@@ -44,5 +51,6 @@ class AuthController extends BaseController
     
     public function refresh(Request $request, Response $response)
     {
+    
     }
 }

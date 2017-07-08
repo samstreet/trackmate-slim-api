@@ -1,5 +1,5 @@
 {
-    "name": "samstreet\trackmate-api",
+    "name": "samstreet/trackmate-api",
     "type": "library",
     "description": "Slim Framework, a PHP micro framework",
     "keywords": ["microframework","rest","router"],
@@ -14,7 +14,9 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "slim/slim": "^3.0"
+        "slim/slim": "^3.0",
+        "nilportugues/api-problems": "^1.2",
+        "nilportugues/hal": "^2.1"
     },
     "suggest": {
         "ext-mcrypt": "Required for HTTP cookie encryption"
