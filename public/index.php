@@ -24,32 +24,33 @@ define('DB_PASS', 'trackmate');
 
 $resolver = new Resolver();
 $core = $resolver->resolve("Trackmate\Trackmate")->bootstrap();
+$trackmate = [];
 $trackmate["sl"] = $core->getServiceLocator();
 $trackmate["controllers"] = $core->getControllers();
 
-$app = new App(new Container($container));
+$app = new App(new Container($trackmate));
 
 $app->group("/api/ride", function () use ($app) {
     $app->post("/new", RideController::class . ":create");
 });
 
-$app->group("/api/v1", function () use ($app) {
+$app->group("/api/v1/", function () use ($app) {
     
     /**
      * User CRUD
      */
-    $app->post("/user", UserController::class . "create");
-    $app->get("/user/{id}", UserController::class . "fetch");
-    $app->patch("/user/{id}", UserController::class . "update");
-    $app->delete("/user/{id}", UserController::class . "delete");
+    $app->post("user", UserController::class . ":create");
+    $app->get("user/{id}", UserController::class . ":fetch");
+    $app->patch("user/{id}", UserController::class . ":update");
+    $app->delete("user/{id}", UserController::class . ":delete");
     
     /**
      * Ride CRUD
      */
-    $app->post("/ride", RideController::class . "create");
-    $app->get("/ride/{id}", RideController::class . "fetch");
-    $app->patch("/ride/{id}", RideController::class . "update");
-    $app->delete("/ride/{id}", RideController::class . "delete");
+    $app->post("ride", RideController::class . ":create");
+    $app->get("ride/{id}", RideController::class . ":fetch");
+    $app->patch("ride/{id}", RideController::class . ":update");
+    $app->delete("ride/{id}", RideController::class . ":delete");
     
     /**
      * Autehtnication

@@ -6,10 +6,21 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Zend\\Diactoros\\' => array($vendorDir . '/zendframework/zend-diactoros/src'),
     'Trackmate\\' => array($baseDir . '/Trackmate'),
+    'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Slim\\' => array($vendorDir . '/slim/slim/Slim'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'NilPortugues\\Serializer\\' => array($vendorDir . '/nilportugues/serializer/src'),
+    'NilPortugues\\Assert\\' => array($vendorDir . '/nilportugues/assert/src'),
+    'NilPortugues\\Api\\Transformer\\' => array($vendorDir . '/nilportugues/api-transformer/src/Transformer'),
+    'NilPortugues\\Api\\Problem\\' => array($vendorDir . '/nilportugues/api-problems/src/ApiProblem'),
+    'NilPortugues\\Api\\Mappings\\' => array($vendorDir . '/nilportugues/api-transformer/src/Mappings'),
+    'NilPortugues\\Api\\Mapping\\' => array($vendorDir . '/nilportugues/api-transformer/src/Mapping'),
+    'NilPortugues\\Api\\Http\\' => array($vendorDir . '/nilportugues/api-transformer/src/Http'),
+    'NilPortugues\\Api\\Hal\\' => array($vendorDir . '/nilportugues/hal/src'),
     'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
+    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
 );

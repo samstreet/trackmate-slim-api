@@ -8,6 +8,7 @@ namespace Trackmate\Controller;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Trackmate\Interfaces\Controllers\ICRUD;
+use NilPortugues\Api\Problem\ApiProblemResponse;
 
 class RideController implements ICRUD
 {

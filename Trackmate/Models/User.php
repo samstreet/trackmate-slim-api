@@ -8,15 +8,15 @@ namespace Trackmate\Models;
 
 class User
 {
-    protected $_id;
-    protected $_firstName;
-    protected $_lastName;
-    protected $_rides = array(); // array of ride models
-    protected $_username;
-    protected $_password;
-    protected $_email;
-    protected $_access_token;
-    protected $_refresh_token;
+    protected $id;
+    protected $firstName;
+    protected $lastName;
+    protected $rides = array(); // array of ride models
+    protected $username;
+    protected $password;
+    protected $email;
+    protected $access_token;
+    protected $refresh_token;
     
     
     // public getters and setters
@@ -26,7 +26,7 @@ class User
      */
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
     
     /**
@@ -34,7 +34,7 @@ class User
      */
     public function setId($id)
     {
-        $this->_id = $id;
+        $this->id = $id;
     }
     
     /**
@@ -42,7 +42,7 @@ class User
      */
     public function getFirstName()
     {
-        return $this->_firstName;
+        return $this->firstName;
     }
     
     /**
@@ -50,7 +50,7 @@ class User
      */
     public function setFirstName($firstName)
     {
-        $this->_firstName = $firstName;
+        $this->firstName = $firstName;
     }
     
     /**
@@ -58,7 +58,7 @@ class User
      */
     public function getLastName()
     {
-        return $this->_lastName;
+        return $this->lastName;
     }
     
     /**
@@ -66,7 +66,7 @@ class User
      */
     public function setLastName($lastName)
     {
-        $this->_lastName = $lastName;
+        $this->lastName = $lastName;
     }
     
     /**
@@ -74,7 +74,7 @@ class User
      */
     public function getRides()
     {
-        return $this->_rides;
+        return $this->rides;
     }
     
     /**
@@ -82,7 +82,7 @@ class User
      */
     public function setRides($rides)
     {
-        $this->_rides = $rides;
+        $this->rides = $rides;
     }
     
     /**
@@ -90,7 +90,7 @@ class User
      */
     public function getUsername()
     {
-        return $this->_username;
+        return $this->username;
     }
     
     /**
@@ -106,7 +106,7 @@ class User
      */
     public function getPassword()
     {
-        return $this->_password;
+        return $this->password;
     }
     
     /**
@@ -114,7 +114,7 @@ class User
      */
     public function setPassword($password)
     {
-        $this->_password = $password;
+        $this->password = $password;
     }
     
     /**
@@ -122,7 +122,7 @@ class User
      */
     public function getEmail()
     {
-        return $this->_email;
+        return $this->email;
     }
     
     /**
@@ -138,7 +138,7 @@ class User
      */
     public function getAccessToken()
     {
-        return $this->_access_token;
+        return $this->access_token;
     }
     
     /**
@@ -146,7 +146,7 @@ class User
      */
     public function setAccessToken($access_token)
     {
-        $this->_access_token = $access_token;
+        $this->access_token = $access_token;
     }
     
     /**
@@ -154,7 +154,7 @@ class User
      */
     public function getRefreshToken()
     {
-        return $this->_refresh_token;
+        return $this->refresh_token;
     }
     
     /**
@@ -162,7 +162,7 @@ class User
      */
     public function setRefreshToken($refresh_token)
     {
-        $this->_refresh_token = $refresh_token;
+        $this->refresh_token = $refresh_token;
     }
     
     
