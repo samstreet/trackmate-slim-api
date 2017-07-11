@@ -16,7 +16,11 @@
         "php": ">=5.3.0",
         "slim/slim": "^3.0",
         "nilportugues/api-problems": "^1.2",
-        "nilportugues/hal": "^2.1"
+        "nilportugues/hal": "^2.1",
+        "bshaffer/oauth2-server-php": "~1.8",
+        "bshaffer/oauth2-server-httpfoundation-bridge": "^1.1",
+        "symfony/psr-http-message-bridge": "^0.2.0",
+        "chadicus/slim-oauth2-middleware": "^3.2"
     },
     "suggest": {
         "ext-mcrypt": "Required for HTTP cookie encryption"

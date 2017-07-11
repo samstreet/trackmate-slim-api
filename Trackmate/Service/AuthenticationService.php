@@ -5,9 +5,8 @@
 
 namespace Trackmate\Service;
 
-use Trackmate\Core\Database;
-use Trackmate\Core\Resolver;
 use Trackmate\Interfaces\Authentication\IAuthentication;
+use \PDO;
 
 /**
  * Class AuthenticationService
@@ -23,12 +22,16 @@ class AuthenticationService extends Base implements IAuthentication
      */
     public function authenticate($username, $password)
     {
-        return [
-            "user" => [
-                "id" => "1",
-                "name" => "Sam Street"
-            ]
-        ];
+        
+        $stmt = $this->db->prepare("SELECT * FROM user WHERE username = ? AND password = ?");
+        $stmt->bindParam(1, $username);
+        $stmt->bindParam(2, $password);
+        
+        $stmt->execute();
+        
+        $user = $stmt->fetch(PDO::FETCH_OBJ);
+        
+        return $user;
     }
     
     /**

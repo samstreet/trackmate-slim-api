@@ -8,11 +8,11 @@ namespace Trackmate;
 
 use Trackmate\Config\Config;
 use Trackmate\Core\ServiceRegister;
-use Trackmate\Core\ServiceLocator;
 use Trackmate\Core\Resolver;
 use Trackmate\Core\Collection;
 use Trackmate\Interfaces\IBootsrappable;
 use Trackmate\Factory\ServiceLocatorFactory;
+
 
 /**
  * Class Trackmate
@@ -33,7 +33,11 @@ class Trackmate implements IBootsrappable
     
     protected $controllers;
     
-    public function __construct(Config $config, Resolver $resolver, Collection $collection)
+    public function __construct(
+        Config $config,
+        Resolver $resolver,
+        Collection $collection
+    )
     {
         $this->config = $config;
         $this->resolver = $resolver;
@@ -62,6 +66,11 @@ class Trackmate implements IBootsrappable
             $this->services[$service] = $this->resolver->resolve($service);
             $serviceRegister->register($service, $this->resolver->resolve($service));
         }
+        
+       
+        
+        $this->services[OAuth2\Server::class] = $server;
+        $serviceRegister->register(OAuth2\Server::class, $server);
         
         $this->serviceLocator = ServiceLocatorFactory::make($serviceRegister);
     }

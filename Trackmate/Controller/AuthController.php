@@ -11,42 +11,34 @@ use NilPortugues\Api\Problem\ApiProblemResponse;
 use Trackmate\Service\HalService;
 use Trackmate\Service\User\UserAuthenticationService;
 use Exception;
+use OAuth2;
+use OAuth2\Server;
+use Symfony\Bridge;
+use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
+use OAuth2\HttpFoundationBridge\Request as BridgeRequest;
 
 /**
  * Class AuthController
+ *
  * @package Trackmate\Controller
  */
 class AuthController extends BaseController
 {
+    /**
+     * Authenticate a user
+     *
+     * @param Request $request The request we are making
+     * @param Response $response Our response object
+     *
+     * @return Response|mixed
+     */
     public function authenticate(Request $request, Response $response)
     {
-        $request->withHeader("Accept", "application/json");
-        $postData = json_decode($request->getBody(), true);
-        $response->withHeader("Content-Type", "application/json");
-        $body = null;
+        die(var_dump($this->validateToken($request)));
+        if ($this->validateToken($request)) {
         
-        try {
-            $login = $this->get(UserAuthenticationService::class)
-                ->authenticate($postData['username'], $postData['password']);
-            
-            http_response_code(200);
-            $body = $this->get(HalService::class)->from($login);
-            
-        } catch (Exception $e) {
-            
-            return ApiProblemResponse::json(
-                403,
-                "Invalid Credentials",
-                "Authentication Error",
-                "error.authentication"
-            );
-            
         }
-        
-        $response = $response->withJson($body);
-        
         return $response;
-        
     }
     
     public function refresh(Request $request, Response $response)

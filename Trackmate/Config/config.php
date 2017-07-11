@@ -11,7 +11,6 @@ use Trackmate\Service\Base;
 use Trackmate\Service\DatabaseService;
 use Trackmate\Service\HalService;
 use Trackmate\Service\AuthenticationService;
-use Trackmate\Service\RideService;
 use Trackmate\Service\User\UserAuthenticationService;
 use Trackmate\Service\UserService;
 
@@ -60,7 +59,6 @@ Class Config implements IBootsrappable
             Base::class,
             DatabaseService::class,
             UserService::class,
-            RideService::class,
             AuthenticationService::class,
             UserAuthenticationService::class,
             HalService::class
@@ -121,8 +119,7 @@ Class Config implements IBootsrappable
         return [
             "BaseController" => "Trackmate\Controller\BaseController",
             "AuthController" => "Trackmate\Controller\AuthController",
-            "UserController" => "Trackmate\Controller\UserController",
-            "RideController" => "Trackmate\Controller\RideController"
+            "UserController" => "Trackmate\Controller\UserController"
         ];
     }
     
