@@ -45,17 +45,9 @@ $app->group("/api/v1/", function () use ($app) {
     $app->delete("user/{id}", UserController::class . ":delete");
     
     /**
-     * Ride CRUD
+     * Authentication
      */
-    $app->post("ride", RideController::class . ":create");
-    $app->get("ride/{id}", RideController::class . ":fetch");
-    $app->patch("ride/{id}", RideController::class . ":update");
-    $app->delete("ride/{id}", RideController::class . ":delete");
-    
-    /**
-     * Autehtnication
-     */
-    $app->post('/authenticate', AuthController::class . ":authenticate");
+    $app->post('authenticate', AuthController::class . ":authenticate");
 });
 
 /**
