@@ -67,11 +67,6 @@ class Trackmate implements IBootsrappable
             $serviceRegister->register($service, $this->resolver->resolve($service));
         }
         
-       
-        
-        $this->services[OAuth2\Server::class] = $server;
-        $serviceRegister->register(OAuth2\Server::class, $server);
-        
         $this->serviceLocator = ServiceLocatorFactory::make($serviceRegister);
     }
     
