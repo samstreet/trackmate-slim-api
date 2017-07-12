@@ -3,6 +3,11 @@
 use Trackmate\Service\Base as BaseService;
 use Slim\App;
 use Slim\Container;
+use Chadicus\Slim\OAuth2\Routes;
+use Chadicus\Slim\OAuth2\Middleware;
+use Slim\Http;
+use OAuth2\Storage;
+use OAuth2\GrantType;
 use Trackmate\Core\Resolver;
 use Trackmate\Controller\HomeController;
 use Trackmate\Controller\AuthController;
@@ -27,6 +32,19 @@ $core = $resolver->resolve("Trackmate\Trackmate")->bootstrap();
 $trackmate = [];
 $trackmate["sl"] = $core->getServiceLocator();
 $trackmate["controllers"] = $core->getControllers();
+
+$storage = new Storage\Pdo($pdo);
+$server = new OAuth2\Server(
+    $storage,
+    [
+        'access_lifetime' => 3600,
+    ],
+    [
+        new GrantType\ClientCredentials($storage),
+        new GrantType\AuthorizationCode($storage),
+    ]
+);
+
 
 $app = new App(new Container($trackmate));
 

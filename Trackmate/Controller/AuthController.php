@@ -11,11 +11,6 @@ use NilPortugues\Api\Problem\ApiProblemResponse;
 use Trackmate\Service\HalService;
 use Trackmate\Service\User\UserAuthenticationService;
 use Exception;
-use OAuth2;
-use OAuth2\Server;
-use Symfony\Bridge;
-use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
-use OAuth2\HttpFoundationBridge\Request as BridgeRequest;
 
 /**
  * Class AuthController
@@ -27,18 +22,19 @@ class AuthController extends BaseController
     /**
      * Authenticate a user
      *
-     * @param Request $request The request we are making
-     * @param Response $response Our response object
-     *
-     * @return Response|mixed
+     * @param Request $request
+     * @param Response $response
      */
     public function authenticate(Request $request, Response $response)
     {
-        die(var_dump($this->validateToken($request)));
-        if ($this->validateToken($request)) {
         
-        }
-        return $response;
+        return ApiProblemResponse::json(
+            403,
+            "Invalid Credentials",
+            "Authentication Error",
+            "error.authentication"
+        );
+        
     }
     
     public function refresh(Request $request, Response $response)

@@ -7,7 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInita5a77facc8fb4d334c6ac83e8a548c84
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
     );
@@ -23,10 +22,7 @@ class ComposerStaticInita5a77facc8fb4d334c6ac83e8a548c84
         ),
         'S' => 
         array (
-            'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
-            'Symfony\\Component\\HttpFoundation\\' => 33,
-            'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
             'Slim\\' => 5,
         ),
         'P' => 
@@ -59,6 +55,7 @@ class ComposerStaticInita5a77facc8fb4d334c6ac83e8a548c84
         ),
         'C' => 
         array (
+            'Chadicus\\Slim\\OAuth2\\Routes\\' => 28,
             'Chadicus\\Slim\\OAuth2\\Middleware\\' => 32,
             'Chadicus\\Slim\\OAuth2\\Http\\' => 26,
             'Chadicus\\Psr\\Middleware\\' => 24,
@@ -74,21 +71,9 @@ class ComposerStaticInita5a77facc8fb4d334c6ac83e8a548c84
         array (
             0 => __DIR__ . '/../..' . '/Trackmate',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
-        ),
-        'Symfony\\Component\\HttpFoundation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/http-foundation',
-        ),
-        'Symfony\\Bridge\\PsrHttpMessage\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/psr-http-message-bridge',
         ),
         'Slim\\' => 
         array (
@@ -146,6 +131,10 @@ class ComposerStaticInita5a77facc8fb4d334c6ac83e8a548c84
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
+        'Chadicus\\Slim\\OAuth2\\Routes\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chadicus/slim-oauth2-routes/src',
+        ),
         'Chadicus\\Slim\\OAuth2\\Middleware\\' => 
         array (
             0 => __DIR__ . '/..' . '/chadicus/slim-oauth2-middleware/src',
@@ -170,10 +159,6 @@ class ComposerStaticInita5a77facc8fb4d334c6ac83e8a548c84
         ),
         'O' => 
         array (
-            'OAuth2\\HttpFoundationBridge' => 
-            array (
-                0 => __DIR__ . '/..' . '/bshaffer/oauth2-server-httpfoundation-bridge/src',
-            ),
             'OAuth2' => 
             array (
                 0 => __DIR__ . '/..' . '/bshaffer/oauth2-server-php/src',
