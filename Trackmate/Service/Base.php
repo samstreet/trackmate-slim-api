@@ -31,21 +31,9 @@ class Base implements IServiceLocatorAware
         $this->resolver = $resolver;
     }
     
-    // could cache
-    public function getConfig()
-    {
-        $this->_config = Config::getConfig();
-        return $this->_config;
-    }
-    
     public function getDatabaseService()
     {
         return  $this->resolver->resolve(Database::class);
-    }
-    
-    public function getRideService()
-    {
-        return $this->resolver->resolve(RideService::class);
     }
     
     public function getUserService()
@@ -103,17 +91,4 @@ class Base implements IServiceLocatorAware
             );
         }
     }
-    
-    // wip
-    public function doesKeyExist($key, $data, $app)
-    {
-        if (!array_key_exists($key, $data)) {
-            $app->contentType("application/json");
-            $app->status($app->response()->getStatus());
-            $string = json_encode($this->standardErrorResponse("Param 'user' is required and cannot be null", $app->response()->getStatus()));
-            return $app->response()->setBody($string);
-        }
-    }
-    
-    // some cache stuff
 }
