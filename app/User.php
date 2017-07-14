@@ -7,7 +7,7 @@ use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Hashing\BcryptHasher;
 
 /**
  * Class User
@@ -15,18 +15,37 @@ use Illuminate\Support\Facades\Hash;
  * @package App
  * @author Sam Street
  */
-class User extends Model implements AuthenticatableContract, AuthorizableContract {
+class User extends Model implements AuthenticatableContract, AuthorizableContract
+{
     use Authenticatable, Authorizable;
+    
+    protected $hasher;
+    
+    public function __construct(array $attributes = [])
+    {
+        $this->hasher = new BcryptHasher();
+        parent::__construct($attributes);
+    }
     
     protected $fillable = [
         'id',
         'name',
-        'email'
-    ];
-    
-    protected $hidden   = [
-        'created_at',
-        'updated_at',
+        'email',
         'password'
     ];
+    
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+    
+    public function verify($email, $password)
+    {
+        $user = User::where('email', $email)->first();
+        if ($user && $this->hasher->check($password, $user->password)) {
+            return $user->id;
+        }
+        return false;
+    }
+    
 }
