@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call('UsersTableSeeder');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        User::truncate();
+        factory(User::class, 10)->create();
+        $this->call('OAuthClientSeeder');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

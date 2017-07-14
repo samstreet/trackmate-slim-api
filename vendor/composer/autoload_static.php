@@ -51,6 +51,9 @@ class ComposerStaticInit24188c720e00828297030d5d83d3b3a6
         ),
         'L' => 
         array (
+            'LucaDegasperi\\OAuth2Server\\' => 27,
+            'League\\OAuth2\\Server\\' => 21,
+            'League\\Event\\' => 13,
             'Laravel\\Lumen\\' => 14,
         ),
         'I' => 
@@ -162,6 +165,18 @@ class ComposerStaticInit24188c720e00828297030d5d83d3b3a6
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'LucaDegasperi\\OAuth2Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lucadegasperi/oauth2-server-laravel/src',
+        ),
+        'League\\OAuth2\\Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/oauth2-server/src',
+        ),
+        'League\\Event\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/event/src',
         ),
         'Laravel\\Lumen\\' => 
         array (
@@ -314,6 +329,20 @@ class ComposerStaticInit24188c720e00828297030d5d83d3b3a6
     );
 
     public static $classMap = array (
+        'CreateOauthAccessTokenScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111657_create_oauth_access_token_scopes_table.php',
+        'CreateOauthAccessTokensTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111518_create_oauth_access_tokens_table.php',
+        'CreateOauthAuthCodeScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111403_create_oauth_auth_code_scopes_table.php',
+        'CreateOauthAuthCodesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111254_create_oauth_auth_codes_table.php',
+        'CreateOauthClientEndpointsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110557_create_oauth_client_endpoints_table.php',
+        'CreateOauthClientGrantsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110817_create_oauth_client_grants_table.php',
+        'CreateOauthClientScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110705_create_oauth_client_scopes_table.php',
+        'CreateOauthClientsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110459_create_oauth_clients_table.php',
+        'CreateOauthGrantScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110403_create_oauth_grant_scopes_table.php',
+        'CreateOauthGrantsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110304_create_oauth_grants_table.php',
+        'CreateOauthRefreshTokensTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111810_create_oauth_refresh_tokens_table.php',
+        'CreateOauthScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110151_create_oauth_scopes_table.php',
+        'CreateOauthSessionScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111109_create_oauth_session_scopes_table.php',
+        'CreateOauthSessionsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111002_create_oauth_sessions_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_13_184442_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'ExampleTest' => __DIR__ . '/../..' . '/tests/ExampleTest.php',
@@ -388,6 +417,7 @@ class ComposerStaticInit24188c720e00828297030d5d83d3b3a6
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'OAuthClientSeeder' => __DIR__ . '/../..' . '/database/seeds/OAuthClientSeeder.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
