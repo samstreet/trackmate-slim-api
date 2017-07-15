@@ -5,11 +5,20 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
 use App\User;
 
 class UserController extends Controller
 {
+    
+    public function __construct(BcryptHasher $hasher)
+    {
+        $this->middleware('oauth', ['except' => ['index', 'show']]);
+        
+        parent::__construct($hasher);
+    }
+    
     public function index()
     {
         $users = User::all();

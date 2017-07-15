@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Hashing\BcryptHasher;
 
+/**
+ * Class Controller
+ * @package App\Http\Controllers
+ *
+ * @author Sam Street
+ */
 class Controller extends BaseController
 {
     protected $hasher;
@@ -19,5 +25,9 @@ class Controller extends BaseController
     }
     public function error($message, $code){
         return response()->json(['message' => $message], $code);
+    }
+    
+    protected function getUserId(){
+        return \LucaDegasperi\OAuth2Server\Facades\Authorizer::getResourceOwnerId();
     }
 }
