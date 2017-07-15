@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(Trackmate\Models\User::class, function (Faker\Generator $faker) {
     $hasher = app()->make('hash');
     return [
         'name' => $faker->name,
