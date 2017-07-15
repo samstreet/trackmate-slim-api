@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
+use Trackmate\Models\User;
 
 class DatabaseSeeder extends Seeder
 {

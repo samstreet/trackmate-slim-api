@@ -2,168 +2,54 @@
 
 namespace Trackmate\Models;
 
-/**
- * @author Sam Street <samstreet.dev@gmail.com>
- */
+use Illuminate\Auth\Authenticatable;
+use Laravel\Lumen\Auth\Authorizable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Hashing\BcryptHasher;
 
-class User
+/**
+ * Class User
+ *
+ * @package App
+ * @author Sam Street
+ */
+class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
-    protected $id;
-    protected $firstName;
-    protected $lastName;
-    protected $rides = array(); // array of ride models
-    protected $username;
-    protected $password;
-    protected $email;
-    protected $access_token;
-    protected $refresh_token;
+    use Authenticatable, Authorizable;
     
+    protected $hasher;
     
-    // public getters and setters
-    
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public function __construct(array $attributes = [])
     {
-        return $this->id;
+        $this->hasher = new BcryptHasher();
+        parent::__construct($attributes);
     }
     
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
+    protected $fillable = [
+        'id',
+        'name',
+        'email',
+        'password'
+    ];
+    
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+    
+    public function locations(){
+        return $this->hasMany('Trackmate\Models\Location');
     }
     
-    /**
-     * @return mixed
-     */
-    public function getFirstName()
+    public function verify($email, $password)
     {
-        return $this->firstName;
+        $user = User::where('email', $email)->first();
+        if ($user && $this->hasher->check($password, $user->password)) {
+            return $user->id;
+        }
+        return false;
     }
-    
-    /**
-     * @param mixed $firstName
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-    }
-    
-    /**
-     * @return mixed
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-    
-    /**
-     * @param mixed $lastName
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-    }
-    
-    /**
-     * @return array
-     */
-    public function getRides()
-    {
-        return $this->rides;
-    }
-    
-    /**
-     * @param array $rides
-     */
-    public function setRides($rides)
-    {
-        $this->rides = $rides;
-    }
-    
-    /**
-     * @return mixed
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-    
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username)
-    {
-        $this->_username = $username;
-    }
-    
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-    
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-    
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-    
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->_email = $email;
-    }
-    
-    /**
-     * @return mixed
-     */
-    public function getAccessToken()
-    {
-        return $this->access_token;
-    }
-    
-    /**
-     * @param mixed $access_token
-     */
-    public function setAccessToken($access_token)
-    {
-        $this->access_token = $access_token;
-    }
-    
-    /**
-     * @return mixed
-     */
-    public function getRefreshToken()
-    {
-        return $this->refresh_token;
-    }
-    
-    /**
-     * @param mixed $refresh_token
-     */
-    public function setRefreshToken($refresh_token)
-    {
-        $this->refresh_token = $refresh_token;
-    }
-    
     
 }
