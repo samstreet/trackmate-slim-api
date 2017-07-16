@@ -21,6 +21,10 @@ $app->get('/users/{user_id}', 'UserController@show');
 $app->put('/users/{user_id}', 'UserController@update');
 $app->delete('/users/{user_id}', 'UserController@destroy');
 
+$app->post('/users/locations', 'UserLocationController@store');
+$app->get('/users/{user_id}/locations', 'UserLocationController@all');
+$app->get('/users/{user_id}/locations/{location_id}', 'UserLocationController@get');
+
 // Request Access Tokens
 $app->post('/oauth', function () use ($app) {
     return response()->json($app->make('oauth2-server.authorizer')->issueAccessToken());
