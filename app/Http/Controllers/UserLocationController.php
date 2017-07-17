@@ -8,6 +8,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
+use Trackmate\Models\Location;
+use Trackmate\Models\User;
 
 class UserLocationController extends Controller
 {
@@ -21,16 +23,34 @@ class UserLocationController extends Controller
     
     public function store(Request $request)
     {
-        return [];
+        //$this->validateRequest($request);
+        
+        $user = User::find($request->get("user_id"));
+        
+        $location = Location::create(
+            'lat'
+        );
+        
+        return response()->json(['data' => "The user with with id {$user->id} has been created"], 201);
     }
     
-    public function get($id)
+    public function get($user_id, $location_id)
     {
         return [];
     }
     
     public function all()
     {
-        return[];
+        return [];
+    }
+    
+    private function validateRequest(Request $request)
+    {
+        $rules = [
+            'lat' => 'required',
+            'lon' => 'required',
+        ];
+        
+        $this->validate($request, $rules);
     }
 }
