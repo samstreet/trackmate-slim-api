@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
-use App\User;
+use Trackmate\Models\User;
 
 class UserController extends Controller
 {

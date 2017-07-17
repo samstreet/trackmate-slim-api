@@ -15,15 +15,15 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-$app->get('/users/', 'UserController@index');
-$app->post('/users/', 'UserController@store');
-$app->get('/users/{user_id}', 'UserController@show');
-$app->put('/users/{user_id}', 'UserController@update');
-$app->delete('/users/{user_id}', 'UserController@destroy');
+$app->get('/api/users/', 'UserController@index');
+$app->post('/api/users/', 'UserController@store');
+$app->get('/api/users/{user_id}', 'UserController@show');
+$app->put('/api/users/{user_id}', 'UserController@update');
+$app->delete('/api/users/{user_id}', 'UserController@destroy');
 
-$app->post('/users/locations', 'UserLocationController@store');
-$app->get('/users/{user_id}/locations', 'UserLocationController@all');
-$app->get('/users/{user_id}/locations/{location_id}', 'UserLocationController@get');
+$app->post('/api/users/locations', 'UserLocationController@store');
+$app->get('/api/users/{user_id}/locations', 'UserLocationController@all');
+$app->get('/api/users/{user_id}/locations/{location_id}', 'UserLocationController@get');
 
 // Request Access Tokens
 $app->post('/oauth', function () use ($app) {
