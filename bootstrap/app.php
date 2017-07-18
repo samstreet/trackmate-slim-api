@@ -2,6 +2,8 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+use Laravel\Passport\PassportServiceProvider;
+
 try {
     (new Dotenv\Dotenv(__DIR__.'/../'))->load();
 } catch (Dotenv\Exception\InvalidPathException $e) {
@@ -59,14 +61,6 @@ $app->singleton(
 |
 */
 
-$app->middleware([
-    \LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware::class
-]);
-$app->routeMiddleware([
-    'oauth' =>
-        \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware::class,
-]);
-
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -78,8 +72,7 @@ $app->routeMiddleware([
 |
 */
 
-$app->register(\LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class);
-$app->register(\LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class);
+$app->register(Laravel\Passport\PassportServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
