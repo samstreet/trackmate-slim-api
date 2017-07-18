@@ -25,13 +25,23 @@ class UserLocationController extends Controller
     {
         //$this->validateRequest($request);
         
-        $user = User::find($request->get("user_id"));
+        $user = $this->getUserId();
         
-        $location = Location::create(
-            'lat'
-        );
-        
-        return response()->json(['data' => "The user with with id {$user->id} has been created"], 201);
+        try {
+            $location = Location::create([
+                'lat' => $request->get('lat'),
+                'lon' => $request->get('lon'),
+                'user_id' => $user
+            ]);
+            die(var_dump($location));
+        } catch (\Exception $e) {
+            return $this->error($e->getMessage(), 400);
+        }
+    
+        return $this->success([
+            'success' => true,
+            'message' => 'User Location Saved'
+        ], 201);
     }
     
     public function get($user_id, $location_id)
