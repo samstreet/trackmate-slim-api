@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "980efcb8b761fca280995360086fa120",
+    "content-hash": "af45e694a5cbb2d62fdcbd7bb0b36617",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -1685,16 +1685,16 @@
         },
         {
             "name": "league/oauth2-server",
-            "version": "6.0.0",
+            "version": "6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-server.git",
-                "reference": "2824f7d27e7bf3f1a711aad24db96425f3278906"
+                "reference": "a1b8d87b473e9b956b80e7e20b31ae20dc670d30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/2824f7d27e7bf3f1a711aad24db96425f3278906",
-                "reference": "2824f7d27e7bf3f1a711aad24db96425f3278906",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/a1b8d87b473e9b956b80e7e20b31ae20dc670d30",
+                "reference": "a1b8d87b473e9b956b80e7e20b31ae20dc670d30",
                 "shasum": ""
             },
             "require": {
@@ -1749,7 +1749,7 @@
                 "secure",
                 "server"
             ],
-            "time": "2017-07-01T17:46:48+00:00"
+            "time": "2017-07-19T06:58:56+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -39,8 +39,20 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'updated_at'
     ];
     
+    /**
+     * ManyToOne relationship of users to locations
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function locations(){
         return $this->hasMany('Trackmate\Models\Location');
+    }
+    
+    /**
+     * ManyToOne relatiosnip between user and friends
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function friends(){
+        return $this->hasMany('Trackmate\Models\SocialConnection');
     }
     
     public function verify($email, $password)

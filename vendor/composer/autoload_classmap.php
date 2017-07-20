@@ -6,22 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreateLocationsTable' => $baseDir . '/database/migrations/2017_07_15_211722_create_locations_table.php',
-    'CreateOauthAccessTokenScopesTable' => $baseDir . '/database/migrations/2014_04_24_111657_create_oauth_access_token_scopes_table.php',
-    'CreateOauthAccessTokensTable' => $baseDir . '/database/migrations/2014_04_24_111518_create_oauth_access_tokens_table.php',
-    'CreateOauthAuthCodeScopesTable' => $baseDir . '/database/migrations/2014_04_24_111403_create_oauth_auth_code_scopes_table.php',
-    'CreateOauthAuthCodesTable' => $baseDir . '/database/migrations/2014_04_24_111254_create_oauth_auth_codes_table.php',
-    'CreateOauthClientEndpointsTable' => $baseDir . '/database/migrations/2014_04_24_110557_create_oauth_client_endpoints_table.php',
-    'CreateOauthClientGrantsTable' => $baseDir . '/database/migrations/2014_04_24_110817_create_oauth_client_grants_table.php',
-    'CreateOauthClientScopesTable' => $baseDir . '/database/migrations/2014_04_24_110705_create_oauth_client_scopes_table.php',
-    'CreateOauthClientsTable' => $baseDir . '/database/migrations/2014_04_24_110459_create_oauth_clients_table.php',
-    'CreateOauthGrantScopesTable' => $baseDir . '/database/migrations/2014_04_24_110403_create_oauth_grant_scopes_table.php',
-    'CreateOauthGrantsTable' => $baseDir . '/database/migrations/2014_04_24_110304_create_oauth_grants_table.php',
-    'CreateOauthRefreshTokensTable' => $baseDir . '/database/migrations/2014_04_24_111810_create_oauth_refresh_tokens_table.php',
-    'CreateOauthScopesTable' => $baseDir . '/database/migrations/2014_04_24_110151_create_oauth_scopes_table.php',
-    'CreateOauthSessionScopesTable' => $baseDir . '/database/migrations/2014_04_24_111109_create_oauth_session_scopes_table.php',
-    'CreateOauthSessionsTable' => $baseDir . '/database/migrations/2014_04_24_111002_create_oauth_sessions_table.php',
-    'CreateUsersTable' => $baseDir . '/database/migrations/2017_07_13_184442_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'ExampleTest' => $baseDir . '/tests/ExampleTest.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
