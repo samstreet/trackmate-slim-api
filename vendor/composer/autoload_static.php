@@ -389,22 +389,6 @@ class ComposerStaticInit24188c720e00828297030d5d83d3b3a6
     );
 
     public static $classMap = array (
-        'CreateLocationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_15_211722_create_locations_table.php',
-        'CreateOauthAccessTokenScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111657_create_oauth_access_token_scopes_table.php',
-        'CreateOauthAccessTokensTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111518_create_oauth_access_tokens_table.php',
-        'CreateOauthAuthCodeScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111403_create_oauth_auth_code_scopes_table.php',
-        'CreateOauthAuthCodesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111254_create_oauth_auth_codes_table.php',
-        'CreateOauthClientEndpointsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110557_create_oauth_client_endpoints_table.php',
-        'CreateOauthClientGrantsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110817_create_oauth_client_grants_table.php',
-        'CreateOauthClientScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110705_create_oauth_client_scopes_table.php',
-        'CreateOauthClientsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110459_create_oauth_clients_table.php',
-        'CreateOauthGrantScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110403_create_oauth_grant_scopes_table.php',
-        'CreateOauthGrantsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110304_create_oauth_grants_table.php',
-        'CreateOauthRefreshTokensTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111810_create_oauth_refresh_tokens_table.php',
-        'CreateOauthScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_110151_create_oauth_scopes_table.php',
-        'CreateOauthSessionScopesTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111109_create_oauth_session_scopes_table.php',
-        'CreateOauthSessionsTable' => __DIR__ . '/../..' . '/database/migrations/2014_04_24_111002_create_oauth_sessions_table.php',
-        'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_13_184442_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'ExampleTest' => __DIR__ . '/../..' . '/tests/ExampleTest.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
