@@ -109,6 +109,7 @@ class ComposerStaticInit24188c720e00828297030d5d83d3b3a6
         array (
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Inflector\\' => 26,
             'Defuse\\Crypto\\' => 14,
             'DeepCopy\\' => 9,
         ),
@@ -342,6 +343,10 @@ class ComposerStaticInit24188c720e00828297030d5d83d3b3a6
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'Doctrine\\Common\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
+        ),
         'Defuse\\Crypto\\' => 
         array (
             0 => __DIR__ . '/..' . '/defuse/php-encryption/src',
@@ -377,13 +382,6 @@ class ComposerStaticInit24188c720e00828297030d5d83d3b3a6
             'Mockery' => 
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
-            ),
-        ),
-        'D' => 
-        array (
-            'Doctrine\\Common\\Inflector\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
             ),
         ),
     );
@@ -926,6 +924,8 @@ class ComposerStaticInit24188c720e00828297030d5d83d3b3a6
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UpdatedTables' => __DIR__ . '/../..' . '/database/migrations/2017_07_23_185214_updated_tables.php',
+        'UserTables' => __DIR__ . '/../..' . '/database/migrations/2017_07_23_184632_user_tables.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

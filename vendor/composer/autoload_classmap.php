@@ -543,4 +543,6 @@ return array(
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UpdatedTables' => $baseDir . '/database/migrations/2017_07_23_185214_updated_tables.php',
+    'UserTables' => $baseDir . '/database/migrations/2017_07_23_184632_user_tables.php',
 );
