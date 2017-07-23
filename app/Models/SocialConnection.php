@@ -3,33 +3,25 @@
  * @author Sam Street
  */
 
-namespace Trackmate\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Location
- *
- * @package Trackmate\Models
- *
- * @author Sam Street <samstreet.dev@gmail.com>
- */
-class Location extends Model
+class SocialConnection extends Model
 {
     protected $fillable = [
         'id',
-        'lat',
-        'lon',
+        'friend_id',
         'user_id'
     ];
     
     protected $hidden = [
-        'created_at'
+        'created_at',
+        'updated_at'
     ];
     
     /**
-     * One To Many
-     *
+     * OneToMany relationship for user and social connection
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user(){
